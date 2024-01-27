@@ -1,4 +1,5 @@
 import {Module} from '../core/module'
+import { randomElementOfArray } from '../utils'
 import bababooey from '../assets/sounds/bababooey.mp3'
 import brue from '../assets/sounds/brue.mp3'
 import napali from '../assets/sounds/na-nas-napali.mp3'
@@ -14,7 +15,7 @@ export class SoundModule extends Module {
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
         console.log('sound')
         const sounds = [bababooey,brue,napali,nope,privet]
-        const audio = new Audio(sounds[Math.floor(Math.random()*sounds.length)])
+        const audio = new Audio(sounds[randomElementOfArray(sounds)])
         audio.play()
 
     }
