@@ -6,6 +6,7 @@ import napali from '../assets/sounds/na-nas-napali.mp3'
 import nope from '../assets/sounds/nope.mp3'
 import privet from '../assets/sounds/o-privet.mp3'
 
+// let sound = 123
 export class SoundModule extends Module {
     constructor(type, text) {
         super(type, text);
@@ -16,5 +17,6 @@ export class SoundModule extends Module {
         const sounds = [bababooey,brue,gta,napali,nope,privet]
         const audio = new Audio(sounds[Math.floor(Math.random()*sounds.length)])
         audio.play()
+        
     }
 }
