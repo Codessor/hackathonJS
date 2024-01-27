@@ -6,6 +6,7 @@ import { TimerModule } from '@/modules/timer.module'
 import { SoundModule } from '@/modules/sound.module'
 import { BackgroundModule } from '@/modules/background.module'
 import { MessageModule } from '@/modules/message.module'
+import { RandomFoxModule } from '@/modules/randomfox.module'
 
 const ulHTML = document.querySelector('ul')
 const contextMenu = new ContextMenu(ulHTML.localName)
@@ -22,6 +23,8 @@ const backgroundModule = new BackgroundModule('background', 'Поменять ц
 contextMenu.add(backgroundModule)
 const messageModule = new MessageModule('message', 'Вызвать сообщение')
 contextMenu.add(messageModule)
+const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса')
+contextMenu.add(randomFoxModule)
 
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault()  // сбрасываем стандартное контекстное меню
@@ -65,6 +68,10 @@ document.addEventListener('click', (event) => {
             break
         case 'message':
             messageModule.trigger();
+            contextMenu.close();
+            break
+        case 'randomFox':
+            randomFoxModule.trigger();
             contextMenu.close();
             break
     }
