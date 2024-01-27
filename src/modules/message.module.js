@@ -19,9 +19,16 @@ export class MessageModule extends Module {
         const text = document.createElement('p')
         textBlock.append(text)
         text.textContent = `${loremIpsum()}`
-        document.body.append(textBlock)
-        setInterval(()=> {
-            textBlock.remove()
-        }, 5000)
+        document.body.prepend(textBlock)
+        textBlock.style.opacity = 1 
+        setTimeout(() => {
+            setInterval(()=> {
+              textBlock.style.opacity-=0.05
+              if (textBlock.style.opacity <= 0) {
+              textBlock.remove()
+              }
+            }, 35)
+          }, 4000)
+        
     }
 }
