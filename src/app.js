@@ -25,8 +25,18 @@ contextMenu.add(messageModule)
 
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault()  // сбрасываем стандартное контекстное меню
-    ulHTML.style.left = `${event.clientX}px`
-    ulHTML.style.top = `${event.clientY}px`
+
+    let x = event.clientX, y = event.clientY, 
+    winWidth = window.innerWidth,
+    winHeight = window.innerHeight,
+    cmWidth = ulHTML.offsetWidth,
+    cmHeight = ulHTML.offsetHeight
+
+    x = x > winWidth - cmWidth ? winWidth - cmWidth : x
+    y = y > winHeight - cmHeight ? winHeight - cmHeight : y
+
+    ulHTML.style.left = `${x}px`
+    ulHTML.style.top = `${y}px`
     contextMenu.open()
 })
 
