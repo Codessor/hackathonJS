@@ -1,49 +1,50 @@
-import './styles.css'
-import { ContextMenu } from './menu'
-import { ClicksModule } from '@/modules/clicks.module'
-import { ShapeModule } from '@/modules/shape.module'
-import { TimerModule } from '@/modules/timer.module'
-import { SoundModule } from '@/modules/sound.module'
-import { BackgroundModule } from '@/modules/background.module'
-import { MessageModule } from '@/modules/message.module'
-import { RandomFoxModule } from '@/modules/randomfox.module'
-import { ShootingRangeModule } from '@/modules/shootingRange.module'
+import './styles.css';
+import { ContextMenu } from './menu';
+import { ClicksModule } from '@/modules/clicks.module';
+import { ShapeModule } from '@/modules/shape.module';
+import { TimerModule } from '@/modules/timer.module';
+import { SoundModule } from '@/modules/sound.module';
+import { BackgroundModule } from '@/modules/background.module';
+import { MessageModule } from '@/modules/message.module';
+import { RandomFoxModule } from '@/modules/randomfox.module';
+import { ShootingRangeModule } from '@/modules/shootingRange.module';
 
-const ulHTML = document.querySelector('ul')
-const contextMenu = new ContextMenu(ulHTML.localName)
+const ulHTML = document.querySelector('ul');
+const contextMenu = new ContextMenu(ulHTML.localName);
 
-const clickModule = new ClicksModule('clicks', 'Считать клики (за 3 секунды)')
-contextMenu.add(clickModule)
-const shapeModule = new ShapeModule('shape', 'Создать фигуру')
-contextMenu.add(shapeModule)
-const timerModule = new TimerModule('timer', 'Вызвать таймер')
-contextMenu.add(timerModule)
-const soundModule = new SoundModule('sound', 'Вызвать звук')
-contextMenu.add(soundModule)
-const backgroundModule = new BackgroundModule('background', 'Поменять цвет')
-contextMenu.add(backgroundModule)
-const messageModule = new MessageModule('message', 'Вызвать сообщение')
-contextMenu.add(messageModule)
-const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса')
-contextMenu.add(randomFoxModule)
-const shootingRangeModule = new ShootingRangeModule('shootingRange', 'Тир')
-contextMenu.add(shootingRangeModule)
+const clickModule = new ClicksModule('clicks', 'Считать клики (за 3 секунды)');
+const shapeModule = new ShapeModule('shape', 'Создать фигуру');
+const timerModule = new TimerModule('timer', 'Вызвать таймер');
+const soundModule = new SoundModule('sound', 'Вызвать звук');
+const backgroundModule = new BackgroundModule('background', 'Поменять цвет');
+const messageModule = new MessageModule('message', 'Вызвать сообщение');
+const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса');
+const shootingRangeModule = new ShootingRangeModule('shootingRange', 'Тир');
+
+contextMenu.add(clickModule);
+contextMenu.add(shapeModule);
+contextMenu.add(timerModule);
+contextMenu.add(soundModule);
+contextMenu.add(backgroundModule);
+contextMenu.add(messageModule);
+contextMenu.add(randomFoxModule);
+contextMenu.add(shootingRangeModule);
 
 document.addEventListener('contextmenu', (event) => {
-    event.preventDefault()  // сбрасываем стандартное контекстное меню
+    event.preventDefault();
 
     let x = event.clientX, y = event.clientY,
         winWidth = window.innerWidth,
         winHeight = window.innerHeight,
         cmWidth = ulHTML.offsetWidth,
-        cmHeight = ulHTML.offsetHeight
+        cmHeight = ulHTML.offsetHeight;
 
-    x = x > winWidth - cmWidth ? winWidth - cmWidth : x
-    y = y > winHeight - cmHeight ? winHeight - cmHeight : y
+    x = x > winWidth - cmWidth ? winWidth - cmWidth : x;
+    y = y > winHeight - cmHeight ? winHeight - cmHeight : y;
 
-    ulHTML.style.left = `${x}px`
-    ulHTML.style.top = `${y}px`
-    contextMenu.open()
+    ulHTML.style.left = `${x}px`;
+    ulHTML.style.top = `${y}px`;
+    contextMenu.open();
 })
 
 document.addEventListener('click', (event) => {

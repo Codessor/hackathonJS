@@ -1,1 +1,1 @@
-export const TIME_TIMER = 3000
+export const TIME_TIMER = 3000;
