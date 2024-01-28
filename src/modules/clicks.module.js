@@ -3,6 +3,9 @@ import { TIME_TIMER } from '@/consts';
 import { clearWindows } from '@/utils';
 
 export class ClicksModule extends Module {
+    #countClick
+    #countDblClick
+
     constructor(type, text) {
         super(type, text);
     }
