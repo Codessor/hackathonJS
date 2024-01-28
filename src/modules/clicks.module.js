@@ -49,7 +49,7 @@ export class ClicksModule extends Module {
             const intervalId = setInterval(() => {
                 const currentTime = new Date()
                 const elapsedTime = currentTime - startTime
-                const remainingTime = Math.max(0, TIME_TIMER - elapsedTime)
+                const remainingTime = Math.max(0, (TIME_TIMER + 1000) - elapsedTime)
 
                 timeHTML.textContent = `Осталось: ${Math.round(remainingTime / 1000)} секунд`
 
