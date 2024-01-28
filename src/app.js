@@ -7,6 +7,7 @@ import { SoundModule } from '@/modules/sound.module'
 import { BackgroundModule } from '@/modules/background.module'
 import { MessageModule } from '@/modules/message.module'
 import { RandomFoxModule } from '@/modules/randomfox.module'
+import { ShootingRangeModule } from '@/modules/shootingRange.module'
 
 const ulHTML = document.querySelector('ul')
 const contextMenu = new ContextMenu(ulHTML.localName)
@@ -25,6 +26,8 @@ const messageModule = new MessageModule('message', 'Вызвать сообще�
 contextMenu.add(messageModule)
 const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса')
 contextMenu.add(randomFoxModule)
+const shootingRangeModule = new ShootingRangeModule('shootingRange', 'Тир')
+contextMenu.add(shootingRangeModule)
 
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault()  // сбрасываем стандартное контекстное меню
@@ -72,6 +75,10 @@ document.addEventListener('click', (event) => {
             break
         case 'randomFox':
             randomFoxModule.trigger();
+            contextMenu.close();
+            break
+        case 'shootingRange':
+            shootingRangeModule.trigger();
             contextMenu.close();
             break
     }
