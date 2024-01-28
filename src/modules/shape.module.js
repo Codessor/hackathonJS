@@ -1,13 +1,12 @@
-import { Module } from "../core/module";
-import { clearWindows } from '../utils';
+import { Module } from '@/core/module'
+import { clearWindows } from '@/utils'
 
 export class ShapeModule extends Module {
   constructor(type, text) {
-    super(type, text);
+    super(type, text)
   }
 
   trigger() {
-    // логику прописываем здесь, для расчёта используем файл utils.js
     clearWindows()
     function randomPositionBox() {
       if (document.querySelector("div.box") !== null) {

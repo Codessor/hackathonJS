@@ -1,14 +1,14 @@
-import { Module } from '../core/module'
-import { loremIpsum } from "lorem-ipsum"
-import getRandomColor from '../utils';
+import { Module } from '@/core/module'
+import { loremIpsum } from 'lorem-ipsum'
+import getRandomColor from '@/utils'
 
 
 export class MessageModule extends Module {
   constructor(type, text) {
-    super(type, text);
+    super(type, text)
   }
 
-  trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
+  trigger() {
     const textBlock = document.createElement('div')
     textBlock.className = 'message-block'
     textBlock.style.width = "500"
@@ -27,6 +27,5 @@ export class MessageModule extends Module {
         }
       }, 35)
     }, 4000)
-
   }
 }
