@@ -42,7 +42,7 @@ body {
     background: #343434;
 }
 
-.message-block{
+.message-block {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     -webkit-box-sizing: content-box;
@@ -53,14 +53,14 @@ body {
     overflow: hidden;
     border: none;
     font: normal 16px/1 Impact, Charcoal, sans-serif;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     text-align: center;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     background: #0199d9;
-    -webkit-box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.3) ;
-    box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.3) ;
-    text-shadow: 5px 5px 1px rgba(0,0,0,0.2) ;
+    -webkit-box-shadow: 5px 5px 1px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 1px 0 rgba(0, 0, 0, 0.3);
+    text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .fox-container {

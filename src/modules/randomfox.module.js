@@ -1,4 +1,4 @@
-import {Module} from '../core/module'
+import { Module } from '../core/module'
 import { random } from '../utils';
 
 export class RandomFoxModule extends Module {
@@ -8,12 +8,11 @@ export class RandomFoxModule extends Module {
 
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
         const foxLoader = document.createElement('span')
-        foxLoader.removeAttribute('hidden')
         foxLoader.textContent = 'Loading...'
         document.body.append(foxLoader)
-        if(document.querySelector('.fox-container')) {
+        if (document.querySelector('.fox-container')) {
             const foxImage = document.querySelector('.fox-container')
-            foxImage.remove()   
+            foxImage.remove()
         }
         async function getRandomFox() {
             try {
@@ -24,11 +23,21 @@ export class RandomFoxModule extends Module {
                     </div>
                 `)
             }
-            catch(error) {
+            catch (error) {
                 throw new Error(error)
             }
             finally {
-                foxLoader.setAttribute('hidden', '')
+                foxLoader.remove()
+                const foxImage = document.querySelector('.fox-container')
+                foxImage.style.opacity = 1
+                setTimeout(() => {
+                    setInterval(() => {
+                        foxImage.style.opacity -= 0.05
+                        if (foxImage.style.opacity <= 0) {
+                            foxImage.remove()
+                        }
+                    }, 35)
+                }, 4000)
             }
         }
         getRandomFox()

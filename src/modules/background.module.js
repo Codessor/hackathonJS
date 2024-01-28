@@ -7,7 +7,6 @@ export class BackgroundModule extends Module {
     }
 
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
-        console.log('background')
         document.body.style.background = getRandomColor()
     }
 }

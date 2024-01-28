@@ -29,11 +29,11 @@ contextMenu.add(randomFoxModule)
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault()  // сбрасываем стандартное контекстное меню
 
-    let x = event.clientX, y = event.clientY, 
-    winWidth = window.innerWidth,
-    winHeight = window.innerHeight,
-    cmWidth = ulHTML.offsetWidth,
-    cmHeight = ulHTML.offsetHeight
+    let x = event.clientX, y = event.clientY,
+        winWidth = window.innerWidth,
+        winHeight = window.innerHeight,
+        cmWidth = ulHTML.offsetWidth,
+        cmHeight = ulHTML.offsetHeight
 
     x = x > winWidth - cmWidth ? winWidth - cmWidth : x
     y = y > winHeight - cmHeight ? winHeight - cmHeight : y
