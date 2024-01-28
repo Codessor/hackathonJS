@@ -42,12 +42,7 @@ body {
     background: #343434;
 }
 
-.message-wrapper {
-    position: fixed;
-}
-
 .message-block {
-    position: static;
     width: 500px;
     height: auto;
     text-align: center;
