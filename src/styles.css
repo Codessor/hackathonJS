@@ -42,6 +42,11 @@ body {
     background: #343434;
 }
 
+.message-wrapper {
+    position: fixed;
+    z-index: 10;
+}
+
 .message-block {
     width: 500px;
     height: auto;

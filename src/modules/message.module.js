@@ -8,13 +8,25 @@ export class MessageModule extends Module {
   }
 
   trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
+    const wrapper = document.createElement('div')
+    wrapper.className = 'message-wrapper'
+
     const textBlock = document.createElement('div')
     textBlock.className = 'message-block'
-    const text = document.createElement('p')
-    textBlock.append(text)
-    text.textContent = `${loremIpsum()}`
-    document.body.prepend(textBlock)
     textBlock.style.opacity = 1
+
+    const text = document.createElement('p')
+    text.textContent = `${loremIpsum()}`
+
+    const hasWrapper = document.querySelector('.message-wrapper')
+    if (hasWrapper) {
+      textBlock.append(text)
+      hasWrapper.append(textBlock)
+    } else {
+      textBlock.append(text)
+      wrapper.append(textBlock)
+      document.body.prepend(wrapper)
+    }
     setTimeout(() => {
       setInterval(() => {
         textBlock.style.opacity -= 0.05
@@ -23,5 +35,10 @@ export class MessageModule extends Module {
         }
       }, 35)
     }, 4000)
+    setInterval(() => {
+      if (!document.querySelector('.message-block')) {
+        wrapper.remove()
+      }
+    }, 5000)
   }
 }
