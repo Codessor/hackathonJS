@@ -1,12 +1,12 @@
-import { Module } from '../core/module'
-import { random, clearWindows } from '../utils';
+import { Module } from '@/core/module'
+import { random, clearWindows } from '@/utils';
 
 export class RandomFoxModule extends Module {
     constructor(type, text) {
-        super(type, text);
+        super(type, text)
     }
 
-    trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
+    trigger() {
         clearWindows()
         const foxLoader = document.createElement('span')
         foxLoader.textContent = 'Loading...'

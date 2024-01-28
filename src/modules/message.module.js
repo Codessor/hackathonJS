@@ -4,7 +4,7 @@ import { loremIpsum } from "lorem-ipsum"
 
 export class MessageModule extends Module {
   constructor(type, text) {
-    super(type, text);
+    super(type, text)
   }
 
   trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
@@ -26,6 +26,5 @@ export class MessageModule extends Module {
         }
       }, 35)
     }, 4000)
-
   }
 }
