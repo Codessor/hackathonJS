@@ -26,6 +26,7 @@ export class TimerModule extends Module {
     #removeTimerHTML() {
         const timerBlock = document.querySelector('.timer-block')
         timerBlock.remove()
+        clearInterval(this.#countdown)
         document.title = 'Context Menu'
     }
 
@@ -39,7 +40,6 @@ export class TimerModule extends Module {
             const secondsLeft = Math.round((endTime - Date.now()) / 1000)
 
             if (secondsLeft < 0) {
-                clearInterval(this.#countdown)
                 this.#removeTimerHTML()
                 return
             }
@@ -60,21 +60,20 @@ export class TimerModule extends Module {
 
     trigger() {
         clearWindows()
-        const time = Number(prompt('Введите время в минутах: ', '1').trim())
-        if (time) {
+        const time = Number(prompt('Введите время в секундах: ', '60').trim())
+        if (time && time <= 3600) {
             const body = document.querySelector('body')
             const timerBlock = this.#createTimerHTML()
             body.insertAdjacentElement('afterbegin', timerBlock)
-            this.#timer(time * 60)
+            this.#timer(time)
             const button = document.querySelector('.timer-block_button')
             if (button) {
                 button.addEventListener('click', () => {
-                    clearInterval(this.#countdown)
                     this.#removeTimerHTML()
                 })
             }
-        } else if (time > 60) {
-            alert('Введите время меньше часа и повторите операцию!')
+        } else if (time > 3600) {
+            alert('Введите время больше часа, повторите операцию!')
         } else {
             alert('Вы ввели неверные данные, повторите операцию!')
         }

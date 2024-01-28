@@ -83,7 +83,7 @@ body {
 }
 
 .timer-block {
-    font-size: 40px;
+    font-size: 30px;
     color: antiquewhite;
     float:right;
 }
@@ -92,6 +92,7 @@ body {
     display: block;
     background: #5c0dac;
     border-radius: 10px;
+    width: 80px;
 }
 
 .timer-block_button {
