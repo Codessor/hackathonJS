@@ -53,7 +53,7 @@ export class ClicksModule extends Module {
             if (remainingTime === 0) {
                 clearInterval(intervalId)
                 this.#removeTextHTML()
-                textHTML.textContent = `одинарных кликов: ${countClick - 1}, двойных кликов: ${countDblClick}`
+                textHTML.textContent = `Всего кликов: ${countClick - 1}`
                 setTimeout(() => {
                     textHTML.remove()
                 }, TIME_TIMER - 1500)
