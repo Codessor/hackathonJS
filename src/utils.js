@@ -12,3 +12,10 @@ export default function getRandomColor() {
   }
   return color;
 }
+
+export function clearWindows() {
+  const body = document.querySelector('body')
+  const menu = document.querySelector('#menu')
+  body.innerHTML = ''
+  body.append(menu)
+}
