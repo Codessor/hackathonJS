@@ -1,5 +1,5 @@
 import { Module } from '../core/module'
-import getRandomColor from '../utils';
+import getRandomColor, { clearWindows } from '../utils';
 
 export class BackgroundModule extends Module {
     constructor(type, text) {
@@ -7,6 +7,7 @@ export class BackgroundModule extends Module {
     }
 
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
+        clearWindows()
         document.body.style.background = getRandomColor()
     }
 }

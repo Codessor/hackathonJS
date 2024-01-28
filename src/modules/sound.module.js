@@ -13,7 +13,6 @@ export class SoundModule extends Module {
     }
 
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
-        console.log('sound')
         const sounds = [bababooey, brue, napali, nope, privet]
         const audio = new Audio(sounds[randomElementOfArray(sounds)])
         audio.play()

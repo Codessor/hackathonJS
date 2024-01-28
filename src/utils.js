@@ -15,6 +15,7 @@ export default function getRandomColor() {
 
 export function clearWindows() {
   const body = document.querySelector('body')
+  body.style.backgroundColor = '#ffffff'
   const menu = document.querySelector('#menu')
   body.innerHTML = ''
   body.append(menu)

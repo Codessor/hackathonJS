@@ -1,4 +1,5 @@
 import { Module } from "../core/module";
+import { clearWindows } from '../utils';
 
 export class ShapeModule extends Module {
   constructor(type, text) {
@@ -7,6 +8,7 @@ export class ShapeModule extends Module {
 
   trigger() {
     // логику прописываем здесь, для расчёта используем файл utils.js
+    clearWindows()
     function randomPositionBox() {
       if (document.querySelector("div.box") !== null) {
         const deleteBox = document.querySelector("div.box");

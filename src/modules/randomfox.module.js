@@ -1,5 +1,5 @@
 import { Module } from '../core/module'
-import { random } from '../utils';
+import { random, clearWindows } from '../utils';
 
 export class RandomFoxModule extends Module {
     constructor(type, text) {
@@ -7,6 +7,7 @@ export class RandomFoxModule extends Module {
     }
 
     trigger() { // логику прописываем здесь, для расчёта используем файл utils.js
+        clearWindows()
         const foxLoader = document.createElement('span')
         foxLoader.textContent = 'Loading...'
         document.body.append(foxLoader)
