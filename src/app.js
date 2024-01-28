@@ -11,12 +11,12 @@ import { RandomFoxModule } from '@/modules/randomfox.module';
 const ulHTML = document.querySelector('ul');
 const contextMenu = new ContextMenu(ulHTML.localName);
 
-const clickModule = new ClicksModule('clicks', 'Считать клики (за 3 секунды)');
-const shapeModule = new ShapeModule('shape', 'Создать фигуру');
+const clickModule = new ClicksModule('clicks', 'Считать клики (5 секунд)');
+const shapeModule = new ShapeModule('shape', 'Случайная фигура');
 const timerModule = new TimerModule('timer', 'Вызвать таймер');
-const soundModule = new SoundModule('sound', 'Вызвать звук');
-const backgroundModule = new BackgroundModule('background', 'Поменять цвет');
-const messageModule = new MessageModule('message', 'Вызвать сообщение');
+const soundModule = new SoundModule('sound', 'Случайный звук');
+const backgroundModule = new BackgroundModule('background', 'Случайный фон');
+const messageModule = new MessageModule('message', 'Случайное сообщение');
 const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса');
 
 contextMenu.add(clickModule);

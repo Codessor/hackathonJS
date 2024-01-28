@@ -8,6 +8,24 @@ export class BackgroundModule extends Module {
 
     trigger() {
         clearWindows();
-        document.body.style.background = getRandomColor();
+
+        const randomColor = getRandomColor();
+        document.body.style.background = randomColor;
+
+        const colorName = document.createElement('p');
+        colorName.className = 'color-name';
+        colorName.textContent = randomColor;
+        document.body.append(colorName);
+
+        const colorButton = document.createElement('button');
+        colorButton.className = 'color-button';
+        colorButton.textContent = 'Случайный фон';
+        document.body.append(colorButton);
+
+        colorButton.addEventListener('click', () => {
+            const randomColor = getRandomColor();
+            document.body.style.background = randomColor;
+            colorName.textContent = randomColor;
+        })
     }
 }
