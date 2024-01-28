@@ -9,6 +9,7 @@ export class RandomFoxModule extends Module {
     trigger() {
         clearWindows()
         const foxLoader = document.createElement('span');
+        foxLoader.className = 'loading-box'
         foxLoader.textContent = 'Loading...';
         document.body.append(foxLoader);
         if (document.querySelector('.fox-container')) {
@@ -20,6 +21,7 @@ export class RandomFoxModule extends Module {
                 const response = await fetch(`https://randomfox.ca/images/${random(1, 123)}.jpg`);
                 document.body.insertAdjacentHTML('beforeend', `
                     <div class="fox-container">
+                        <h3 class="message hidden-fox">Кликните по лисе, чтобы получить ещё одну👇</h3>
                         <img src="${response.url}" class="fox-image">
                     </div>
                 `);
@@ -29,16 +31,16 @@ export class RandomFoxModule extends Module {
             }
             finally {
                 foxLoader.remove();
-                const foxImage = document.querySelector('.fox-container');
-                foxImage.style.opacity = 1;
+                const foxImage = document.querySelector('.fox-image');
+                foxImage.addEventListener('click', () => {
+                    document.querySelector('.fox-container').remove();
+                    getRandomFox();
+                })
                 setTimeout(() => {
-                    setInterval(() => {
-                        foxImage.style.opacity -= 0.05;
-                        if (foxImage.style.opacity <= 0) {
-                            foxImage.remove();
-                        }
-                    }, 35)
-                }, 4000)
+                    if(document.querySelector('.message').classList.contains('hidden-fox')) {
+                        document.querySelector('.message').className = 'message';
+                    }
+                }, 3000);
             }
         }
         getRandomFox();

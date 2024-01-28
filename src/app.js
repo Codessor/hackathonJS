@@ -7,7 +7,6 @@ import { SoundModule } from '@/modules/sound.module';
 import { BackgroundModule } from '@/modules/background.module';
 import { MessageModule } from '@/modules/message.module';
 import { RandomFoxModule } from '@/modules/randomfox.module';
-import { ShootingRangeModule } from '@/modules/shootingRange.module';
 
 const ulHTML = document.querySelector('ul');
 const contextMenu = new ContextMenu(ulHTML.localName);
@@ -19,7 +18,6 @@ const soundModule = new SoundModule('sound', 'Вызвать звук');
 const backgroundModule = new BackgroundModule('background', 'Поменять цвет');
 const messageModule = new MessageModule('message', 'Вызвать сообщение');
 const randomFoxModule = new RandomFoxModule('randomFox', 'Случайная лиса');
-const shootingRangeModule = new ShootingRangeModule('shootingRange', 'Тир');
 
 contextMenu.add(clickModule);
 contextMenu.add(shapeModule);
@@ -28,7 +26,6 @@ contextMenu.add(soundModule);
 contextMenu.add(backgroundModule);
 contextMenu.add(messageModule);
 contextMenu.add(randomFoxModule);
-contextMenu.add(shootingRangeModule);
 
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault();
@@ -76,10 +73,6 @@ document.addEventListener('click', (event) => {
             break
         case 'randomFox':
             randomFoxModule.trigger();
-            contextMenu.close();
-            break
-        case 'shootingRange':
-            shootingRangeModule.trigger();
             contextMenu.close();
             break
     }
