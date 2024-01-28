@@ -81,3 +81,21 @@ body {
     background: skyblue;
     color: antiquewhite;
 }
+
+.timer-block {
+    font-size: 40px;
+    color: antiquewhite;
+    float:right;
+}
+
+.timer-block_timer {
+    display: block;
+    background: #5c0dac;
+    border-radius: 10px;
+}
+
+.timer-block_button {
+    background-color: #5c0dac;
+    color: antiquewhite;
+    border-radius: 30px;
+}
