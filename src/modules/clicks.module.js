@@ -2,9 +2,6 @@ import { Module } from '@/core/module'
 import { TIME_TIMER } from '@/consts'
 
 export class ClicksModule extends Module {
-    #countClick
-    #countDblClick
-
     constructor(type, text) {
         super(type, text)
     }
@@ -15,16 +12,17 @@ export class ClicksModule extends Module {
         return textHTML
     }
 
-    #count() {
-        let counter = 0
-        return function () {
-            return counter++
+    #removeTextHTML() {
+        const textHTML = document.querySelector('.text-block')
+        if (textHTML) {
+            textHTML.remove()
         }
     }
 
     trigger() {
         let countClick = 0
         let countDblClick = 0
+        this.#removeTextHTML()
 
         const body = document.querySelector('body')
         const textHTML = this.#createTextHTML()
@@ -34,36 +32,34 @@ export class ClicksModule extends Module {
 
         const startTime = new Date()
 
-        setTimeout(() => {
-            this.#countClick = this.#count()
-            this.#countDblClick = this.#count()
+        const handleClick = () => {
+            countClick++
+        };
 
-            window.addEventListener('click', () => {
-                countClick = this.#countClick()
-            })
+        const handleDblClick = () => {
+            countDblClick++
+        };
 
-            window.addEventListener('dblclick', () => {
-                countDblClick = this.#countDblClick()
-            })
+        window.addEventListener('click', handleClick)
+        window.addEventListener('dblclick', handleDblClick)
 
-            const intervalId = setInterval(() => {
-                const currentTime = new Date()
-                const elapsedTime = currentTime - startTime
-                const remainingTime = Math.max(0, (TIME_TIMER + 1000) - elapsedTime)
+        const intervalId = setInterval(() => {
+            const currentTime = new Date()
+            const elapsedTime = currentTime - startTime
+            const remainingTime = Math.max(0, (TIME_TIMER + 1000) - elapsedTime)
 
-                timeHTML.textContent = `Осталось: ${Math.round(remainingTime / 1000)} секунд`
+            timeHTML.textContent = `Осталось: ${Math.round(remainingTime / 1000)} секунд`
 
-                if (remainingTime === 0) {
-                    clearInterval(intervalId)
-                    timeHTML.remove()
-                    textHTML.textContent = `одинарных кликов: ${countClick}, двойных кликов: ${countDblClick}`
-                    setTimeout(() => {
-                        textHTML.remove()
-                    }, TIME_TIMER - 1500);
-                    window.removeEventListener('click', () => {})
-                    window.removeEventListener('dblclick', () => {})
-                }
-            }, 1000)
-        }, 0)
+            if (remainingTime === 0) {
+                clearInterval(intervalId)
+                this.#removeTextHTML()
+                textHTML.textContent = `одинарных кликов: ${countClick - 1}, двойных кликов: ${countDblClick}`
+                setTimeout(() => {
+                    textHTML.remove()
+                }, TIME_TIMER - 1500)
+                window.removeEventListener('click', handleClick)
+                window.removeEventListener('dblclick', handleDblClick)
+            }
+        }, 1000)
     }
 }
